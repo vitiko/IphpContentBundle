@@ -11,12 +11,8 @@
             "email": "vitiko@mail.ru"
         }
     ],
-	
+ 
     "require": {
-        "php": ">=5.3.2"
-    },
-	
-    "require-dev": {
         "iphp/core-bundle": "dev-master"
     } 
 	
