@@ -1,0 +1,28 @@
+{
+    "name": "iphp/content-bundle",
+    "type": "bundle",
+    "description": "Basic content management for symfony",
+    "keywords": ["symfony"],
+    "homepage": "http://symfonydev.ru",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vitiko",
+            "email": "vitiko@mail.ru"
+        }
+    ],
+	
+    "require": {
+        "php": ">=5.3.2",
+    },
+	
+    "require-dev": {
+        "iphp/core-bundle": "dev-master"
+    },
+	
+	"autoload": {
+        "psr-0": { "Iphp\\ContentBundle": "" }
+    },
+    "target-dir": "Iphp/ContentBundle"
+	
+}
