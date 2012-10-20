@@ -15,6 +15,11 @@
     "require": {
         "iphp/core-bundle": "dev-master",
 	    "iphp/filestore-bundle":"dev-master"
-    } 
+    },
+	
+	"autoload": {
+        "psr-0": { "Iphp\\ContentBundle": "" }
+    },
+    "target-dir": "Iphp/ContentBundle"
 	
 }
