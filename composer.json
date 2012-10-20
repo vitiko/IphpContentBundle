@@ -2,7 +2,7 @@
     "name": "iphp/content-bundle",
     "type": "bundle",
     "description": "Basic content management for symfony",
-    "keywords": ["symfony"],
+    "keywords": ["symfony 2","content management"],
     "homepage": "http://symfonydev.ru",
     "license": "MIT",
     "authors": [
