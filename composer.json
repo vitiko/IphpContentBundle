@@ -13,7 +13,8 @@
     ],
  
     "require": {
-        "iphp/core-bundle": "dev-master"
+        "iphp/core-bundle": "dev-master",
+	    "iphp/filestore-bundle":"dev-master"
     } 
 	
 }
