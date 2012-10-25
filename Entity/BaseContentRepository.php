@@ -5,7 +5,7 @@ namespace Iphp\ContentBundle\Entity;
 
 use Iphp\CoreBundle\Entity\BaseEntityRepository;
 
-class BaseContentRepository extends BaseEntityRepository
+abstract class BaseContentRepository extends BaseEntityRepository
 {
     public function rubricIndex($rubric)
     {
