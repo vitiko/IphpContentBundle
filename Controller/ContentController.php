@@ -6,48 +6,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Application\Iphp\CoreBundle\Entity\Rubric;
 use Iphp\CoreBundle\Controller\RubricAwareController;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class ContentController extends RubricAwareController
 {
-
-
-    protected function getRepository()
-    {
-        return $this->getDoctrine()->getRepository('ApplicationIphpContentBundle:Content');
-    }
-
-
-    protected function getRubricIndex(Rubric $rubric)
-    {
-        return $this->getRepository()->rubricIndex($rubric);
-    }
-
+    /**
+     * @Template("IphpContentBundle:Content:content.html.twig")
+     */
     public function indexAction()
     {
         $content = $this->getRubricIndex($this->getCurrentRubric());
 
         if ($content && !$content->getEnabled()) $content = null;
         //if (!$content) throw $this->createNotFoundException('Индексный материал не найден');
-        return $this->render('IphpContentBundle::content.html.twig',
-            array('content' => $content));
+
+        return   array('content' => $content);
     }
 
-
-    function getPaginator()
-    {
-        return $this->get('knp_paginator');
-    }
-
-    function paginate($query, $itemPerPage)
-    {
-        return $this->getPaginator()->paginate(
-            $query,
-            $this->get('request')->query->get('page', 1) /*page number*/,
-            $itemPerPage/*limit per page*/
-        );
-    }
-
+    /**
+     * @Template()
+     */
     function listAction()
     {
         $rubric = $this->getCurrentRubric();
@@ -57,11 +35,13 @@ class ContentController extends RubricAwareController
                     ->addOrderBy ('c.date','DESC')->addOrderBy ('c.updatedAt','DESC');
         });
 
-        return $this->render(
-            'IphpContentBundle::list.html.twig',
-            array('contents' => $this->paginate($query, 20)));
+        return  array('contents' => $this->paginate($query, 20));
     }
 
+
+    /**
+     * @Template("IphpContentBundle:Content:content.html.twig")
+     */
     public function contentBySlugAction($slug)
     {
         $rubric = $this->getCurrentRubric();
@@ -72,12 +52,14 @@ class ContentController extends RubricAwareController
 
         if (!$content) throw $this->createNotFoundException('Материал с кодом "' . $slug . '" не найден');
 
-        return $this->render('IphpContentBundle::content.html.twig',
-            array('content' => $content));
+        return   array('content' => $content);
 
     }
 
 
+    /**
+     * @Template()
+     */
     function searchAction(Request $request)
     {
         $searchStr = $request->get ('search');
@@ -91,5 +73,36 @@ class ContentController extends RubricAwareController
         return $this->render(
             'IphpContentBundle::search.html.twig',
             array('contents' => $query ? $this->paginate($query, 20) :  array(), 'searchStr' => $searchStr ));
+    }
+
+
+
+
+
+
+
+    protected function getRepository()
+    {
+        return $this->getDoctrine()->getRepository('ApplicationIphpContentBundle:Content');
+    }
+
+
+    protected function getRubricIndex(Rubric $rubric)
+    {
+        return $this->getRepository()->rubricIndex($rubric);
+    }
+
+    function getPaginator()
+    {
+        return $this->get('knp_paginator');
+    }
+
+    function paginate($query, $itemPerPage)
+    {
+        return $this->getPaginator()->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1) /*page number*/,
+            $itemPerPage/*limit per page*/
+        );
     }
 }

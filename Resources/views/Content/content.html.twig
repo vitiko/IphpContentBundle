@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+
+
+{% if content %}
+
+{% block page_header %}
+<div class="page-header">
+    <h1>{{ content }}
+        <small>{{ content.abstract}}</small>
+    </h1>
+</div>
+{% endblock page_header %}
+
+
+
+
+{% if content.image%}
+{% endif %}
+
+
+{{ content.content|raw}}
+
+
+
+{% endif%}
+
+
+{% endblock body %}
