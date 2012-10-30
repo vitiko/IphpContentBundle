@@ -81,7 +81,7 @@ class ContentAdmin extends Admin
 
             ->add('rubric', 'rubricchoice')
             ->add ('redirectUrl')
-            ->add('author', 'sonata_type_model_list', array('required' => false) /*, array('edit' => 'list')*/)
+        //    ->add('author', 'sonata_type_model_list', array('required' => false) /*, array('edit' => 'list')*/)
 
 
             ->add('date', 'genemu_jquerydate', array(
