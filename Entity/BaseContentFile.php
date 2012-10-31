@@ -48,6 +48,16 @@ abstract class BaseContentFile
 
 
 
+   public function __toString()
+   {
+       if ($this->getTitle()) return $this->getTitle();
+
+       if ($this->file && isset($this->file['originalName']) && $this->file['originalName'])
+           return  $this->file['originalName'];
+
+       return '[No name]';
+   }
+
 
 
     /**

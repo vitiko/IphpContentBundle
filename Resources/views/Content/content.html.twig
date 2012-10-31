@@ -1,31 +1,54 @@
-{% extends '::base.html.twig' %}
+{% extends 'IphpCoreBundle::page-with-header.html.twig' %}
 
 
-{% block body %}
 
 
-{% if content %}
 
 {% block page_header %}
+{% if content %}
 <div class="page-header">
     <h1>{{ content }}
         <small>{{ content.abstract}}</small>
     </h1>
 </div>
+{% else %}
+{{ parent() }}
+{% endif%}
 {% endblock page_header %}
 
 
 
 
+
+{% block page_body %}
+{% if content %}
+
+
+{% block content_image %}
 {% if content.image%}
+{% endif %}
+{% endblock %}
+
+
+{% block content_content %}
+{{ content.content|raw}}
+{% endblock content_content %}
+
+
+
+{% if content.files| length %}
+{% block content_files %}
+ <h3>Файлы</h3>
+
+ <ul>
+     {% for file in content.files %}
+     <li><a href="{{ file.file.path }}">{{ file }}</a></li>
+     {% endfor %}
+ </ul>
+{% endblock content_files %}
 {% endif %}
 
 
-{{ content.content|raw}}
+{% endif %}
+{% endblock page_body %}
 
-
-
-{% endif%}
-
-
-{% endblock body %}

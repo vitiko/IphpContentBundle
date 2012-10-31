@@ -1,0 +1,23 @@
+iphp_file_store:
+    mappings:
+       content_file:
+           upload_dir: %iphp.web_dir%/files/contentfile
+           upload_path: /files/contentfile
+           delete_on_remove: false
+           directory_namer:
+             property:
+                 params: { field : "content.id"}
+           namer: ~
+
+
+       content_image:
+           upload_dir: %iphp.web_dir%/files/contentimage
+           upload_path: /files/contentimage
+           delete_on_remove: true
+           directory_namer:
+             date:
+                 params: { field : createdAt, depth : month }
+           namer:
+             translit: ~
+             propertyPrefix:
+                   params: { field : id, delimiter: "_" }
