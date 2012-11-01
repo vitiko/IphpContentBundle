@@ -36,13 +36,26 @@
 
 
 
+{% if content.links| length %}
+{% block content_links %}
+<h3>Ссылки</h3>
+
+<ul>
+    {% for link in content.links %}
+    <li><a target="_blank" href="{{ link.url }}">{{ link.title}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock content_links %}
+{% endif %}
+
+
 {% if content.files| length %}
 {% block content_files %}
  <h3>Файлы</h3>
 
  <ul>
      {% for file in content.files %}
-     <li><a href="{{ file.file.path }}">{{ file }}</a></li>
+     <li><a target="_blank" href="{{ file.file.path }}">{{ file }}</a></li>
      {% endfor %}
  </ul>
 {% endblock content_files %}
