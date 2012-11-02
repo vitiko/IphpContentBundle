@@ -1,15 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'IphpCoreBundle::page-with-header.html.twig' %}
 
-
-{% block body %}
-
-{% block page_header %}
-<div class="page-header">
-    <h1>{{ iphp.rubric }}
-        <small>{{ iphp.rubric.abstract}}</small>
-    </h1>
-</div>
-{% endblock page_header %}
+{% block page_body %}
 
 
 {% block contents %}
@@ -31,4 +22,4 @@
 {% endblock contents %}
 
 
-{% endblock body %}
+{% endblock page_body %}
