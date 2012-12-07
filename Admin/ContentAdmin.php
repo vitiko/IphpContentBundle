@@ -11,7 +11,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 
 use Knp\Menu\ItemInterface as MenuItemInterface;
-
+use Sonata\AdminBundle\Admin\AdminInterface;
 
 class ContentAdmin extends Admin
 {
@@ -175,7 +175,7 @@ array('edit' => 'list',  'link_parameters' => array('context' => 'contentimage')
      *
      * @return void
      */
-    protected function configureSideMenu(MenuItemInterface $menu, $action, Admin $childAdmin = null)
+    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
     {
         if (!$childAdmin && !in_array($action, array('edit'))) {
             return;

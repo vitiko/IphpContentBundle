@@ -19,6 +19,8 @@ class ContentQueryBuilder extends BaseEntityQueryBuilder
     protected $fromRubricId;
 
 
+
+
     public function getDefaultAlias()
     {
         return 'c';
