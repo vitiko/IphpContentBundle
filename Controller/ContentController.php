@@ -102,7 +102,9 @@ class ContentController extends RubricAwareController
         return $this->getPaginator()->paginate(
             $query,
             $this->get('request')->query->get('page', 1) /*page number*/,
-            $itemPerPage/*limit per page*/
+            $itemPerPage/*limit per page*/,
+
+            array('distinct' => false)
         );
     }
 }
