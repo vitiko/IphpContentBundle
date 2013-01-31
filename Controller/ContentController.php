@@ -92,19 +92,5 @@ class ContentController extends RubricAwareController
         return $this->getRepository()->rubricIndex($rubric);
     }
 
-    function getPaginator()
-    {
-        return $this->get('knp_paginator');
-    }
 
-    function paginate($query, $itemPerPage)
-    {
-        return $this->getPaginator()->paginate(
-            $query,
-            $this->get('request')->query->get('page', 1) /*page number*/,
-            $itemPerPage/*limit per page*/,
-
-            array('distinct' => false)
-        );
-    }
 }
