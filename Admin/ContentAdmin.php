@@ -40,6 +40,7 @@ class ContentAdmin extends Admin
 
         if (!$this->hasRequest()) {
             $this->datagridValues = array(
+                '_per_page' => 30,
                 '_page' => 1,
                 '_sort_order' => 'DESC', // sort direction
                 '_sort_by' => 'updatedAt' // field name
