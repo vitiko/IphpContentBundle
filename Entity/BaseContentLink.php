@@ -156,4 +156,10 @@ abstract class BaseContentLink
     }
 
 
+
+    public function removeContent()
+    {
+        $this->content = null;
+    }
+
 }

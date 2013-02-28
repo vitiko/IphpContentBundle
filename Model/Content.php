@@ -6,7 +6,7 @@ namespace Iphp\ContentBundle\Model;
 
 
 use Iphp\ContentBundle\Entity\BaseContentFile;
-
+use Iphp\ContentBundle\Entity\BaseContentLink;
 
 abstract class Content implements ContentInterface
 {
@@ -430,43 +430,82 @@ abstract class Content implements ContentInterface
 
     public function setFiles($files)
     {
-        $this->files = $files;
+        foreach ($files as $file)  $file->setContent ($this);
 
-        foreach ($this->files as $pos => $file) {
-            $file->setContent ($this); //->setPos ($pos);
+        foreach ($this->getFiles() as $file) {
+            if (!$files->contains($file)) {
+                $this->getFiles()->removeElement($file);
+            }
         }
+
+        $this->files = $files;
         return $this;
     }
 
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection;
+     */
     public function getFiles()
     {
         return $this->files;
     }
 
 
-    public function addFiles(BaseContentFile $file)
+
+    public function addFile(BaseContentFile $file)
     {
+        $file->setContent ($this);
         $this->files[] = $file;
     }
 
+    public function removeFile (BaseContentFile $file)
+    {
+
+        $this->getFiles()->removeElement($file);
+    }
+
+
+
+
     public function setLinks($links)
     {
-        $this->links = $links;
-        foreach ($this->links as $pos => $link) {
-            $link->setContent ($this); //->setPos ($pos);
+        foreach ($links as  $link)  $link->setContent ($this);
+
+        foreach ($this->getLinks() as $link) {
+            if (!$links->contains($link)) {
+                $this->getLinks()->removeElement($link);
+            }
         }
+
+        $this->links = $links;
         return $this;
     }
 
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection;
+     */
     public function getLinks()
     {
         return $this->links;
     }
 
-    public function addLinks ($link)
+    public function addLink (BaseContentLink $link)
     {
+        $link->setContent ($this);
         $this->links[] = $link;
     }
+
+
+
+    public function removeLink($link)
+    {
+        $this->getLinks()->removeElement($link);
+    }
+
+
+
+
 
     public function setRedirectUrl($redirectUrl)
     {
