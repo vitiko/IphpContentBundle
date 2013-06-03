@@ -4,6 +4,7 @@
 namespace Iphp\ContentBundle\Block;
 
 use Symfony\Component\HttpFoundation\Response;
+use Sonata\BlockBundle\Block\BlockContextInterface;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
@@ -20,7 +21,7 @@ class ContentAnnouncesBlockService extends ContentBlockService
     /**
      * {@inheritdoc}
      */
-    public function execute(BlockInterface $block, Response $response = null)
+    public function execute(BlockContextInterface $block, Response $response = null)
     {
         $settings = array_merge($this->getDefaultSettings(), $block->getSettings());
 
