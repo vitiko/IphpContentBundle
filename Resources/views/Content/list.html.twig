@@ -14,9 +14,7 @@
 
 
 {% block pagination %}
-<div>
-    {{ contents.render()|raw }}
-</div>
+{% include 'IphpCoreBundle::pagination.html.twig' with {'entities': contents} %}
 {% endblock pagination %}
 
 {% endblock contents %}
