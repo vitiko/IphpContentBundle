@@ -35,7 +35,7 @@ class ContentController extends RubricAwareController
                     ->addOrderBy ('c.date','DESC')->addOrderBy ('c.updatedAt','DESC');
         });
 
-        return  array('contents' => $this->paginate($query, 20));
+        return  array('entities' => $this->paginate($query, 20));
     }
 
 
