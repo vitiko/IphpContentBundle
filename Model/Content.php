@@ -7,7 +7,12 @@ namespace Iphp\ContentBundle\Model;
 
 use Iphp\ContentBundle\Entity\BaseContentFile;
 use Iphp\ContentBundle\Entity\BaseContentLink;
+use Iphp\FileStoreBundle\Mapping\Annotation as FileStore;
+use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ *  @FileStore\Uploadable
+ */
 abstract class Content implements ContentInterface
 {
     protected $title;
@@ -24,9 +29,6 @@ abstract class Content implements ContentInterface
 
     protected $contentFormatter;
 
-    /* protected $tags;
-
-   protected $comments;*/
 
     protected $enabled;
 
@@ -47,7 +49,14 @@ abstract class Content implements ContentInterface
     protected $images;
 
 
-
+    /**
+     * @Assert\Image(
+     *     maxSize="20M"
+     * )
+     * @FileStore\UploadableField(mapping="content_image")
+     *
+     * @var File $image
+     */
     protected $image;
 
     protected $date;
@@ -87,7 +96,7 @@ abstract class Content implements ContentInterface
      */
     public function getTitle()
     {
-        return $this->title;
+        return (string) $this->title;
     }
 
     /**
