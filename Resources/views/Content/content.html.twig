@@ -49,12 +49,12 @@
 {% endif %}
 
 
-{% if content.files| length %}
+{% if content.publishedFiles| length %}
 {% block content_files %}
  <h3>Файлы</h3>
 
  <ul>
-     {% for file in content.files  if file.published%}
+     {% for file in content.publishedFiles %}
      <li><a target="_blank" href="{{ file.file.path }}">{{ file }}</a></li>
      {% endfor %}
  </ul>

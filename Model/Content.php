@@ -459,6 +459,20 @@ abstract class Content implements ContentInterface
         return $this->files;
     }
 
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection;
+     */
+    public function getPublishedFiles()
+    {
+        $publishedFiles  = $this->files;
+
+        foreach ($publishedFiles as $file)
+            if (!$file->getPublished()) $publishedFiles->removeElement($file);
+        return $publishedFiles;
+    }
+
+
+
 
 
     public function addFile(BaseContentFile $file)
