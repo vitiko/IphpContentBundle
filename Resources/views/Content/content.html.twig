@@ -54,7 +54,7 @@
  <h3>Файлы</h3>
 
  <ul>
-     {% for file in content.files %}
+     {% for file in content.files  if file.published%}
      <li><a target="_blank" href="{{ file.file.path }}">{{ file }}</a></li>
      {% endfor %}
  </ul>

@@ -7,6 +7,7 @@
         <field name="pos" type="integer" column="pos" nullable="true"/>
         <field name="title" type="string" column="title"/>
         <field name="file" type="array" column="file" nullable="true"/>
+        <field name="published" type="boolean" column="published" nullable="true"/>
         <field name="description" type="text" column="description" nullable="true"/>
 
         <field name="createdAt" type="datetime" column="created_at"/>

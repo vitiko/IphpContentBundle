@@ -32,6 +32,12 @@ abstract class BaseContentFile
 
 
     /**
+     * @var boolean Show Content File
+     */
+    protected $published = true;
+
+
+    /**
      * @Assert\File(
      *     maxSize="20M"
      * )
@@ -181,6 +187,25 @@ abstract class BaseContentFile
     public function getPos()
     {
         return $this->pos;
+    }
+
+
+
+    /**
+     * @param boolean $published
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 
 }
