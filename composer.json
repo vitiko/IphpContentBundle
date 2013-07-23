@@ -13,8 +13,8 @@
     ],
  
     "require": {
-        "iphp/core-bundle": "dev-master",
-	    "iphp/filestore-bundle":"dev-master"
+        "iphp/core-bundle": "@stable",
+	    "iphp/filestore-bundle":"@stable"
     },
 	
 	"autoload": {
