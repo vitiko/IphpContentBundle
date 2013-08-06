@@ -70,7 +70,7 @@ class ContentAdmin extends Admin
     {
 
         $formMapper
-            ->with('Основные')
+            ->with('Base params')
             ->add('title', null, array('label' => 'Заголовок'))
             ->add('enabled', null, array('required' => false, 'label' => 'Показывать на сайте'))
             ->add('slug', 'slug_text', array(
@@ -93,7 +93,7 @@ class ContentAdmin extends Admin
 
 
 
-            ->with('Изображения', array('collapsed' => true))
+            ->with('Images', array('collapsed' => true))
           /*  ->add('image', 'sonata_type_model_list', array('required' => false),
             array('link_parameters' => array('context' => 'contentimage')))*/
 
