@@ -15,9 +15,6 @@ iphp_file_store:
            upload_path: /files/contentimage
            delete_on_remove: true
            directory_namer:
-             date:
-                 params: { field : createdAt, depth : month }
-           namer:
-             translit: ~
-             propertyPrefix:
-                   params: { field : id, delimiter: "_" }
+              property:
+                   params: { field : "content.id"}
+           namer: ~

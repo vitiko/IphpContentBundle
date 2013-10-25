@@ -56,7 +56,7 @@ class ContentController extends RubricAwareController
         if ($content->getRedirectUrl())
             return $this->redirect($content->getRedirectUrl());
 
-        
+
         return   array('content' => $content);
 
     }

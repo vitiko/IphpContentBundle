@@ -35,6 +35,24 @@
 {% endblock content_content %}
 
 
+{% if content.publishedImages| length %}
+{% block content_images  %}
+
+
+    {% for image in content.publishedImages  if image.file %}
+    {% block content_img %}
+    <a href="{{ image.file.path}}" target="_blank"><img src="{{ image.file.path}}" class="img-polaroid"></a>
+    {% endblock content_img %}
+    {% endfor %}
+
+{% endblock content_images %}
+{% endif %}
+
+
+
+
+
+
 
 {% if content.links| length %}
 {% block content_links %}
@@ -42,11 +60,15 @@
 
 <ul>
     {% for link in content.links %}
+    {% block content_link %}
     <li><a target="_blank" href="{{ link.url }}">{{ link.title}}</a></li>
+    {% endblock content_link %}
     {% endfor %}
 </ul>
 {% endblock content_links %}
 {% endif %}
+
+
 
 
 {% if content.publishedFiles| length %}
@@ -55,7 +77,9 @@
 
  <ul>
      {% for file in content.publishedFiles %}
+     {% block content_file %}
      <li><a target="_blank" href="{{ file.file.path }}">{{ file }}</a></li>
+     {% endblock content_file %}
      {% endfor %}
  </ul>
 {% endblock content_files %}

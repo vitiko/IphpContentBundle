@@ -6,12 +6,13 @@ namespace Iphp\ContentBundle\Model;
 
 
 use Iphp\ContentBundle\Entity\BaseContentFile;
+use Iphp\ContentBundle\Entity\BaseContentImage;
 use Iphp\ContentBundle\Entity\BaseContentLink;
 use Iphp\FileStoreBundle\Mapping\Annotation as FileStore;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- *  @FileStore\Uploadable
+ * @FileStore\Uploadable
  */
 abstract class Content implements ContentInterface
 {
@@ -70,8 +71,6 @@ abstract class Content implements ContentInterface
     protected $redirectUrl;
 
 
-
-
     public function getSitePath()
     {
         return $this->getRubric()->getFullPath() . ($this->getSlug() ? $this->getSlug() . '/' : '');
@@ -96,7 +95,7 @@ abstract class Content implements ContentInterface
      */
     public function getTitle()
     {
-        return (string) $this->title;
+        return (string)$this->title;
     }
 
     /**
@@ -274,9 +273,9 @@ abstract class Content implements ContentInterface
     protected function checkSlug()
     {
         if ($this->slug === null)
-            $this->slug = ($this->getSlugPrefix() ? $this->getSlugPrefix().'-' : '').
-                   \Iphp\CoreBundle\Util\Slugify::slugifyPreserveWords($this->getTitle(),45);
-                   //substr (\Iphp\CoreBundle\Util\Translit :: translit($this->getTitle()),0,50);
+            $this->slug = ($this->getSlugPrefix() ? $this->getSlugPrefix() . '-' : '') .
+                \Iphp\CoreBundle\Util\Slugify::slugifyPreserveWords($this->getTitle(), 45);
+        //substr (\Iphp\CoreBundle\Util\Translit :: translit($this->getTitle()),0,50);
     }
 
     /**
@@ -439,7 +438,7 @@ abstract class Content implements ContentInterface
 
     public function setFiles($files)
     {
-        foreach ($files as $file)  $file->setContent ($this);
+        foreach ($files as $file) $file->setContent($this);
 
         foreach ($this->getFiles() as $file) {
             if (!$files->contains($file)) {
@@ -464,7 +463,7 @@ abstract class Content implements ContentInterface
      */
     public function getPublishedFiles()
     {
-        $publishedFiles  = $this->files;
+        $publishedFiles = $this->files;
 
         foreach ($publishedFiles as $file)
             if (!$file->getPublished()) $publishedFiles->removeElement($file);
@@ -472,27 +471,48 @@ abstract class Content implements ContentInterface
     }
 
 
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection;
+     */
+    public function getPublishedImages()
+    {
+        $publishedImages = $this->images;
 
+        foreach ($publishedImages as $image)
+            if (!$image->getPublished()) $publishedImages->removeElement($image);
+        return $publishedImages;
+    }
 
 
     public function addFile(BaseContentFile $file)
     {
-        $file->setContent ($this);
+        $file->setContent($this);
         $this->files[] = $file;
     }
 
-    public function removeFile (BaseContentFile $file)
+    public function removeFile(BaseContentFile $file)
     {
 
         $this->getFiles()->removeElement($file);
     }
 
 
+    public function addImage(BaseContentImage $image)
+    {
+        $image->setContent($this);
+        $this->images[] = $image;
+    }
+
+    public function removeImage(BaseContentImage $image)
+    {
+
+        $this->getImages()->removeElement($image);
+    }
 
 
     public function setLinks($links)
     {
-        foreach ($links as  $link)  $link->setContent ($this);
+        foreach ($links as $link) $link->setContent($this);
 
         foreach ($this->getLinks() as $link) {
             if (!$links->contains($link)) {
@@ -513,21 +533,17 @@ abstract class Content implements ContentInterface
         return $this->links;
     }
 
-    public function addLink (BaseContentLink $link)
+    public function addLink(BaseContentLink $link)
     {
-        $link->setContent ($this);
+        $link->setContent($this);
         $this->links[] = $link;
     }
-
 
 
     public function removeLink($link)
     {
         $this->getLinks()->removeElement($link);
     }
-
-
-
 
 
     public function setRedirectUrl($redirectUrl)

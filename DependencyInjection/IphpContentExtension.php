@@ -177,6 +177,46 @@ class IphpContentExtension extends Extension
         }
 
 
+        if (class_exists($config['class']['contentimage']) && $config['class']['contentimage']) {
+
+            $collector->addAssociation($config['class']['content'], 'mapOneToMany', array(
+                'fieldName' => 'images',
+                'targetEntity' => $config['class']['contentimage'],
+                'cascade' => array(
+                    'remove',
+                    'persist',
+                ),
+                'mappedBy' => 'content',
+                'orphanRemoval' => true,
+                'orderBy' => array(
+                    'pos' => 'ASC',
+                ),
+
+            ));
+
+
+            $collector->addAssociation($config['class']['contentimage'], 'mapManyToOne', array(
+                'fieldName' => 'content',
+                'targetEntity' => $config['class']['content'],
+                'cascade' => array(
+                    'persist',
+                ),
+                'mappedBy' => NULL,
+                'inversedBy' => 'images',
+                'joinColumns' => array(
+                    array(
+                        'name' => 'content_id',
+                        'referencedColumnName' => 'id',
+                        'onDelete' => 'SET NULL',
+                    ),
+                ),
+                // 'orphanRemoval' => false,
+            ));
+
+        }
+
+
+
 
         if (class_exists($config['class']['contentlink']) && $config['class']['contentlink']) {
 

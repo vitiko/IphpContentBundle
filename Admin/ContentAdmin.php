@@ -21,7 +21,6 @@ class ContentAdmin extends Admin
     protected $userManager;
 
 
-
     /**
      * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
      *
@@ -47,7 +46,6 @@ class ContentAdmin extends Admin
             );
         }
     }
-
 
 
     protected function configureShowField(ShowMapper $showMapper)
@@ -81,7 +79,7 @@ class ContentAdmin extends Admin
         ))
 
             ->add('rubric', 'rubricchoice')
-            ->add ('redirectUrl')
+            ->add('redirectUrl')
         //    ->add('author', 'sonata_type_model_list', array('required' => false) /*, array('edit' => 'list')*/)
 
 
@@ -91,13 +89,16 @@ class ContentAdmin extends Admin
             ->add('content', 'genemu_tinymce', array('label' => 'Текст'))
 
 
-
-
             ->with('Images', array('collapsed' => true))
-          /*  ->add('image', 'sonata_type_model_list', array('required' => false),
-            array('link_parameters' => array('context' => 'contentimage')))*/
 
             ->add('image', 'iphp_file')
+            ->add('images', 'sonata_type_collection',
+            array('by_reference' => false),
+            array(
+                'edit' => 'inline',
+                'sortable' => 'pos',
+                'inline' => 'table',
+            ))
 
             ->end()
 
@@ -114,7 +115,7 @@ class ContentAdmin extends Admin
 
             ->with('Links', array('collapsed' => true))
             ->add('links', 'sonata_type_collection',
-            array( 'by_reference' => false),
+            array('by_reference' => false),
             array(
                 'edit' => 'inline',
                 'sortable' => 'pos',
@@ -138,7 +139,7 @@ array('edit' => 'list',  'link_parameters' => array('context' => 'contentimage')
             ->addIdentifier('title', null, array('label' => 'Заголовок'))
             ->add('enabled', null, array('label' => 'Показывать на сайте'))
             ->add('rubric', null, array('label' => 'Рубрика'))
-     /*       ->add('image', 'text', array(
+        /*       ->add('image', 'text', array(
             'template' => 'IphpCoreBundle::image_preview.html.twig'
         ))*/
 
@@ -164,7 +165,7 @@ array('edit' => 'list',  'link_parameters' => array('context' => 'contentimage')
         ))
             ->add('title')
             ->add('enabled')
-            ->add ('id')//     ->add('date')// ->add('author')
+            ->add('id')//     ->add('date')// ->add('author')
         ;
     }
 
