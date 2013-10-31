@@ -54,7 +54,7 @@ abstract class Content implements ContentInterface
      * @Assert\Image(
      *     maxSize="20M"
      * )
-     * @FileStore\UploadableField(mapping="content_image")
+     * @FileStore\UploadableField(mapping="content_announceimage")
      *
      * @var File $image
      */

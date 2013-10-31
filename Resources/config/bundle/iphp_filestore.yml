@@ -18,3 +18,13 @@ iphp_file_store:
               property:
                    params: { field : "content.id"}
            namer: ~
+
+
+       content_announceimage:
+           upload_dir: %iphp.web_dir%/files/contentimage
+           upload_path: /files/contentimage
+           delete_on_remove: true
+           directory_namer:
+               property:
+                   params: { field : "id"}
+           namer: ~
