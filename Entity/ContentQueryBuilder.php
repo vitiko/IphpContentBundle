@@ -19,8 +19,6 @@ class ContentQueryBuilder extends BaseEntityQueryBuilder
     protected $fromRubricId;
 
 
-
-
     public function getDefaultAlias()
     {
         return 'c';
@@ -31,10 +29,9 @@ class ContentQueryBuilder extends BaseEntityQueryBuilder
         if ($rubric instanceof \Application\Iphp\CoreBundle\Entity\Rubric) {
             $this->fromRubric = $rubric;
 
-        } else  {
+        } else {
             $this->fromRubricId = $rubric;
-            if (!is_integer($this->fromRubricId))
-            {
+            if (!is_integer($this->fromRubricId)) {
                 $this->prepareFromRubric();
                 $rubric = $this->fromRubric;
             }
@@ -43,7 +40,7 @@ class ContentQueryBuilder extends BaseEntityQueryBuilder
         //     'Method ContentQueryBuilder::fromRubric accepts integer or \Application\Iphp\CoreBundle\Entity\Rubric object');
 
 
-         $this->orWhere($this->currentAlias . '.rubric = :fromRubric')->setParameter('fromRubric', $rubric);
+        $this->orWhere($this->currentAlias . '.rubric = :fromRubric')->setParameter('fromRubric', $rubric);
         /*else
           $this->join('c.rubric', 'r')->andWhere('r.fullPath = :fromRubricFullPath')->setParameter('fromRubricFullPath',$rubric);*/
 
@@ -69,12 +66,9 @@ class ContentQueryBuilder extends BaseEntityQueryBuilder
     }
 
 
-
-
     protected function prepareFromRubric()
     {
         if ($this->fromRubric || !$this->fromRubricId) return;
-
 
 
         $this->fromRubric = is_integer($this->fromRubricId) ?
@@ -97,6 +91,12 @@ class ContentQueryBuilder extends BaseEntityQueryBuilder
         return $this;
     }
 
+
+    public function whereIndex($isIndex)
+    {
+        $this->andWhere("c.slug " . ($isIndex ? " = ''" : "<> ''" ));
+        return $this;
+    }
 
     protected function getSearchFields($params = array())
     {
