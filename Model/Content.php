@@ -77,6 +77,11 @@ abstract class Content implements ContentInterface
     }
 
 
+    public function isIndex()
+    {
+        return $this->getSlug() == '';
+    }
+
     /**
      * Set title
      *
