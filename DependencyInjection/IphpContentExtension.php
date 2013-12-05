@@ -93,28 +93,7 @@ class IphpContentExtension extends Extension
             ));
         }
 
-/*
-        if (class_exists($config['class']['media']) && $config['class']['media']) {
 
-            $collector->addAssociation($config['class']['content'], 'mapManyToOne', array(
-                'fieldName' => 'image',
-                'targetEntity' => $config['class']['media'],
-                'cascade' => array(
-                    'persist',
-                ),
-                'mappedBy' => NULL,
-                'inversedBy' => NULL,
-                'joinColumns' => array(
-                    array(
-                        'name' => 'image_id',
-                        'referencedColumnName' => 'id',
-                        'onDelete' => 'SET NULL',
-                    ),
-                ),
-                'orphanRemoval' => false,
-            ));
-
-        }*/
 
 
         if (class_exists($config['class']['author']) && $config['class']['author']) {
@@ -137,6 +116,50 @@ class IphpContentExtension extends Extension
                 'orphanRemoval' => false,
             ));
         }
+
+
+
+
+        if ($config['class']['editor'] && class_exists($config['class']['editor'])) {
+
+            $collector->addAssociation($config['class']['content'], 'mapManyToOne', array(
+                'fieldName' => 'createdBy',
+                'targetEntity' => $config['class']['editor'],
+                'cascade' => array(
+                    'persist',
+                ),
+                'mappedBy' => NULL,
+                'inversedBy' => NULL,
+                'joinColumns' => array(
+                    array(
+                        'name' => 'createdby_id',
+                        'referencedColumnName' => 'id',
+                        'onDelete' => 'SET NULL',
+                    ),
+                ),
+                'orphanRemoval' => false,
+            ));
+
+
+            $collector->addAssociation($config['class']['content'], 'mapManyToOne', array(
+                'fieldName' => 'updatedBy',
+                'targetEntity' => $config['class']['editor'],
+                'cascade' => array(
+                    'persist',
+                ),
+                'mappedBy' => NULL,
+                'inversedBy' => NULL,
+                'joinColumns' => array(
+                    array(
+                        'name' => 'updatedby_id',
+                        'referencedColumnName' => 'id',
+                        'onDelete' => 'SET NULL',
+                    ),
+                ),
+                'orphanRemoval' => false,
+            ));
+        }
+
 
         if (class_exists($config['class']['contentfile']) && $config['class']['contentfile']) {
 

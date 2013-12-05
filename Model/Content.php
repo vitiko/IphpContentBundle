@@ -9,6 +9,7 @@ use Iphp\ContentBundle\Entity\BaseContentFile;
 use Iphp\ContentBundle\Entity\BaseContentImage;
 use Iphp\ContentBundle\Entity\BaseContentLink;
 use Iphp\FileStoreBundle\Mapping\Annotation as FileStore;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -48,6 +49,17 @@ abstract class Content implements ContentInterface
     protected $author;
 
     protected $images;
+
+    /**
+     * @var \Symfony\Component\Security\Core\User\UserInterface;
+     */
+    protected $updatedBy;
+
+    /**
+     * @var \Symfony\Component\Security\Core\User\UserInterface;
+     */
+    protected $createdBy;
+
 
 
     /**
@@ -572,6 +584,44 @@ abstract class Content implements ContentInterface
     {
         return $this->slugPrefix;
     }
+
+    /**
+     * @param \Symfony\Component\Security\Core\User\UserInterface $createdBy
+     */
+    public function setCreatedBy(UserInterface  $createdBy)
+    {
+        $this->createdBy = $createdBy;
+        return $this;
+    }
+
+    /**
+     * @return \Symfony\Component\Security\Core\User\UserInterface
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * @param \Symfony\Component\Security\Core\User\UserInterface $updatedBy
+     */
+    public function setUpdatedBy(UserInterface $updatedBy)
+    {
+        $this->updatedBy = $updatedBy;
+        return $this;
+    }
+
+    /**
+     * @return \Symfony\Component\Security\Core\User\UserInterface
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
+    }
+
+
+
+
 
 
 }

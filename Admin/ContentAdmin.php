@@ -3,7 +3,7 @@
 
 namespace Iphp\ContentBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Iphp\CoreBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -121,10 +121,8 @@ class ContentAdmin extends Admin
                 'sortable' => 'pos',
                 'inline' => 'table',
             ))
-            ->end()
-        /*       ->add('images', 'sonata_type_collection', array(),
-array('edit' => 'list',  'link_parameters' => array('context' => 'contentimage'),
-    'inline' => 'table'  ))*/
+
+
             ->end();
     }
 
@@ -170,34 +168,7 @@ array('edit' => 'list',  'link_parameters' => array('context' => 'contentimage')
     }
 
 
-    /**
-     * @param \Knp\Menu\ItemInterface $menu
-     * @param $action
-     * @param null|\Sonata\AdminBundle\Admin\Admin $childAdmin
-     *
-     * @return void
-     */
-    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
-    {
-        if (!$childAdmin && !in_array($action, array('edit'))) {
-            return;
-        }
 
-        $admin = $this->isChild() ? $this->getParent() : $this;
-
-        $id = $admin->getRequest()->get('id');
-
-        $menu->addChild(
-            $this->trans('Content Show'),
-            array('uri' => $admin->generateUrl('show', array('id' => $id)))
-        );
-
-        $menu->addChild(
-            $this->trans('Content Site Show'),
-            array('uri' => $admin->getSubject()->getSitePath(), 'linkAttributes' => array('target' => '_blank'))
-        );
-
-    }
 
     public function setUserManager($userManager)
     {
