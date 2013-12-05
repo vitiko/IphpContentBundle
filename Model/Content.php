@@ -274,8 +274,6 @@ abstract class Content implements ContentInterface
 
         $this->checkSlug();
 
-        /*if (!$this->getSlug())
-            $this->setSlug(  self::slugify($this->getTitle()));*/
     }
 
     public function preUpdate()

@@ -167,7 +167,11 @@ class ContentAdmin extends Admin
         ;
     }
 
-
+    public function prePersist($content)
+    {
+        if (!$content->getSlug()) $content->setSlug ('');
+        parent::prePersist($content);
+    }
 
 
     public function setUserManager($userManager)
