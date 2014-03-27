@@ -105,15 +105,5 @@ class ContentQueryBuilder extends BaseEntityQueryBuilder
             $this->currentAlias . '.content');
     }
 
-    public function search($searchStr)
-    {
-        if (!$searchStr) return $this;
-        $searchExpr = $this->expr()->orx();
 
-        foreach ($this->getSearchFields() as $field)
-            $searchExpr->add($this->expr()->like($field, $this->expr()->literal('%' . $searchStr . '%')));
-
-        $this->andWhere($searchExpr);
-        return $this;
-    }
 }
