@@ -11,14 +11,14 @@ use Iphp\CoreBundle\Module\Module;
 
 
 /**
- * Модуль - материал в индексе рубрики
+ * Module - content list
  */
 class ContentListModule extends Module
 {
 
     function __construct()
     {
-        $this->setName('Материалы - список');
+        $this->setName('Content list');
         $this->allowMultiple = true;
     }
 

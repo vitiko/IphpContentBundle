@@ -39,6 +39,29 @@
                 <source>Redirect Url</source>
                 <target>Редирект</target>
             </trans-unit>
+
+            <trans-unit id="IphpCoreBundle Modules">
+                <source>IphpContentBundle Modules</source>
+                <target>Контент</target>
+            </trans-unit>
+
+            <trans-unit id="Content search">
+                <source>Content search</source>
+                <target>Поиск по материалам</target>
+            </trans-unit>
+
+            <trans-unit id="Content list">
+                <source>Content list</source>
+                <target>Список материалов</target>
+            </trans-unit>
+
+            <trans-unit id="Content - rubric index">
+                <source>Content - rubric index</source>
+                <target>Материал - индекс рубрики</target>
+            </trans-unit>
+
+
+
         </body>
     </file>
 </xliff>

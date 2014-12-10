@@ -11,14 +11,14 @@ use Iphp\CoreBundle\Module\Module;
 use Iphp\ContentBundle\Admin\Extension\RubricAdminExtension;
 
 /**
- * Модуль - материал в индексе рубрики
+ * Module - content search
  */
 class ContentSearchModule extends Module
 {
 
     function __construct()
     {
-        $this->setName('Поиск по материалам');
+        $this->setName('Content search');
         $this->allowMultiple = false;
     }
 

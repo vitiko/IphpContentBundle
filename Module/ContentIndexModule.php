@@ -11,14 +11,14 @@ use Iphp\CoreBundle\Module\Module;
 use Iphp\ContentBundle\Admin\Extension\RubricAdminExtension;
 
 /**
- * Модуль - материал в индексе рубрики
+ * Module - content - rubric index
  */
 class ContentIndexModule extends Module
 {
 
     function __construct()
     {
-        $this->setName('Материал - индекс рубрики');
+        $this->setName('Content - rubric index');
         $this->allowMultiple = true;
     }
 
