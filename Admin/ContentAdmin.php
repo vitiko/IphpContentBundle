@@ -88,7 +88,7 @@ class ContentAdmin extends Admin
             ->add('abstract', null, array('label' => 'Анонс'))
             ->add('content', 'genemu_tinymce', array('label' => 'Текст'))
 
-
+            ->end()
             ->with('Images', array('collapsed' => true))
 
             ->add('image', 'iphp_file')
@@ -99,6 +99,7 @@ class ContentAdmin extends Admin
                 'sortable' => 'pos',
                 'inline' => 'table',
             ))
+
 
             ->end()
 
