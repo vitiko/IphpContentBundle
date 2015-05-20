@@ -86,7 +86,7 @@ class ContentAdmin extends Admin
             ->add('date', 'genemu_jquerydate', array(
             'required' => false, 'widget' => 'single_text'))
             ->add('abstract', null, array('label' => 'Анонс'))
-            ->add('content', 'genemu_tinymce', array('label' => 'Текст'))
+            ->add('content', 'textarea', array('label' => 'Текст', 'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced')))
 
             ->end()
             ->with('Images', array('collapsed' => true))
