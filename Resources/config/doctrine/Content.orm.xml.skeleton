@@ -17,5 +17,13 @@
         <unique-constraints>
             <unique-constraint columns="rubric_id,slug" name="rubricslug_idx"/>
         </unique-constraints>
+
+        <indexes>
+               <index name="enabled_idx" columns="enabled"></index>
+               <index name="updated_at_idx" columns="updated_at"></index>
+               <index name="created_at_idx" columns="created_at"></index>
+        </indexes>
+
+
     </entity>
 </doctrine-mapping>
