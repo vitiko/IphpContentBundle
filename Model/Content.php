@@ -5,8 +5,11 @@
 namespace Iphp\ContentBundle\Model;
 
 
+use Iphp\ContentBundle\Entity\BaseContentFileMedia as ContentFileMedia;
+use Doctrine\Common\Collections\ArrayCollection;
 use Iphp\ContentBundle\Entity\BaseContentFile;
 use Iphp\ContentBundle\Entity\BaseContentImage;
+use Iphp\ContentBundle\Entity\BaseContentImageMedia;
 use Iphp\ContentBundle\Entity\BaseContentLink;
 use Iphp\FileStoreBundle\Mapping\Annotation as FileStore;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -50,6 +53,7 @@ abstract class Content implements ContentInterface
 
     protected $images;
 
+
     /**
      * @var \Symfony\Component\Security\Core\User\UserInterface;
      */
@@ -61,15 +65,17 @@ abstract class Content implements ContentInterface
     protected $createdBy;
 
 
-
     /**
      * @Assert\Image(
      *     maxSize="20M"
      * )
-     * @FileStore\UploadableField(mapping="content_announceimage")
+     * @FileStore\UploadableField(mapping="content_announceimage", fileDataProperty ="image"))
      *
      * @var File $image
      */
+    protected $imageUpload;
+
+
     protected $image;
 
     protected $date;
@@ -78,14 +84,37 @@ abstract class Content implements ContentInterface
 
     protected $files;
 
+    protected $redirectToFirstFile;
+
     protected $links;
 
     protected $redirectUrl;
 
 
+    /**
+     * @var ContentFileMedia[]
+     */
+    protected $filesMedia;
+
+    /**
+     * @var ContentImageMedia[]
+     */
+    protected $imagesMedia;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+        $this->files = new ArrayCollection();
+        $this->links = new ArrayCollection();
+
+        $this->filesMedia = new ArrayCollection();
+        $this->imagesMedia = new ArrayCollection();
+    }
+
     public function getSitePath()
     {
-        return $this->getRubric()->getFullPath() . ($this->getSlug() ? $this->getSlug() . '/' : '');
+        return $this->getRedirectUrl() ? $this->getRedirectUrl() :
+            $this->getRubric()->getFullPath() . ($this->getSlug() ? $this->getSlug() . '/' : '');
     }
 
 
@@ -586,7 +615,7 @@ abstract class Content implements ContentInterface
     /**
      * @param \Symfony\Component\Security\Core\User\UserInterface $createdBy
      */
-    public function setCreatedBy(UserInterface  $createdBy)
+    public function setCreatedBy(UserInterface $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
@@ -617,9 +646,126 @@ abstract class Content implements ContentInterface
         return $this->updatedBy;
     }
 
+    /**
+     * @param mixed $redirectToFirstFile
+     */
+    public function setRedirectToFirstFile($redirectToFirstFile)
+    {
+        $this->redirectToFirstFile = $redirectToFirstFile;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRedirectToFirstFile()
+    {
+        return $this->redirectToFirstFile;
+    }
 
 
+    /**
+     * @return ContentFileMedia[]
+     */
+    public function getFilesMedia()
+    {
+        return $this->filesMedia;
+    }
 
+    /**
+     * @param ContentFileMedia[] $filesMedia
+     */
+    public function setFilesMedia($filesMedia)
+    {
+        foreach ($this->filesMedia as $fileMedia) {
+            $fileMedia->setContent(null);
+        }
+
+        $this->filesMedia = new ArrayCollection();
+
+        foreach ($filesMedia as $file) {
+            $this->addFilesMedia($file);
+            $file->setContent($this);
+        }
+    }
+
+    /**
+     * @param ContentFileMedia $fileMedia
+     */
+    public function addFilesMedia(ContentFileMedia $fileMedia)
+    {
+        if (!$this->filesMedia->contains($fileMedia)) {
+            $this->filesMedia->add($fileMedia);
+        }
+    }
+
+    /**
+     * @param ContentFileMedia $fileMedia
+     */
+    public function removeFilesMedia(ContentFileMedia $fileMedia)
+    {
+        $this->filesMedia->removeElement($fileMedia);
+    }
+
+    /**
+     * @return BaseContentImageMedia[]
+     */
+    public function getImagesMedia()
+    {
+        return $this->imagesMedia;
+    }
+
+    /**
+     * @param BaseContentImageMedia[] $imagesMedia
+     */
+    public function setImagesMedia($imagesMedia)
+    {
+        foreach ($this->imagesMedia as $imageMedia) {
+            $imageMedia->setContent(null);
+        }
+
+        $this->imagesMedia = new ArrayCollection();
+
+        foreach ($imagesMedia as $imageMedia) {
+            $this->addImagesMedia($imageMedia);
+        }
+    }
+
+    /**
+     * @param BaseContentImageMedia $imageMedia
+     */
+    public function addImagesMedia(BaseContentImageMedia $imageMedia)
+    {
+        if (!$this->imagesMedia->contains($imageMedia)) {
+            $this->imagesMedia->add($imageMedia);
+            $imageMedia->setContent($this);
+        }
+    }
+
+    /**
+     * @param BaseContentImageMedia $imageMedia
+     */
+    public function removeImagesMedia(BaseContentImageMedia $imageMedia)
+    {
+        $this->imagesMedia->removeElement($imageMedia);
+    }
+
+    /**
+     * @param \Iphp\ContentBundle\Model\File $imageUpload
+     */
+    public function setImageUpload($imageUpload)
+    {
+        $this->imageUpload = $imageUpload;
+        return $this;
+    }
+
+    /**
+     * @return \Iphp\ContentBundle\Model\File
+     */
+    public function getImageUpload()
+    {
+        return $this->imageUpload;
+    }
 
 
 }

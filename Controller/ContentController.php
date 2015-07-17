@@ -54,6 +54,17 @@ class ContentController extends RubricAwareController
         if (!$content) throw $this->createNotFoundException('Материал с кодом "' . $slug . '" не найден');
 
 
+ /*       if ($content->getRedirectToFirstFile())
+        {
+            foreach ($content->getFiles() as $contentFile)
+            {
+                if ($contentFile->getPublished() && $contentFile->getFile())
+                {
+                    print
+                }
+            }
+        }*/
+
         if ($content->getRedirectUrl())
             return $this->redirect($content->getRedirectUrl());
 

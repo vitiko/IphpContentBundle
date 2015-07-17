@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Application\Iphp\ContentBundle\Entity\ContentImageMedia"
+            table="content__image_media">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+
+
+        <many-to-one target-entity="Application\Iphp\ContentBundle\Entity\Content" field="content" inversed-by="imagesMedia">
+            <join-column name="content_id" referenced-column-name="id" />
+        </many-to-one>
+        <many-to-one target-entity="Application\Sonata\MediaBundle\Entity\Media" field="media">
+            <join-column name="media_id" referenced-column-name="id" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

@@ -37,14 +37,17 @@ abstract class BaseContentFile
     protected $published = true;
 
 
+
     /**
      * @Assert\File(
      *     maxSize="20M"
      * )
-     * @FileStore\UploadableField(mapping="content_file", fileNameProperty="file")
-     *
-     * @var File $file
+     * @FileStore\UploadableField(mapping="content_file", fileDataProperty="file")
+
      */
+    protected $uploadFile;
+
+
     protected $file;
 
 
@@ -207,5 +210,24 @@ abstract class BaseContentFile
     {
         return $this->published;
     }
+
+    /**
+     * @param mixed $uploadFile
+     */
+    public function setUploadFile($uploadFile)
+    {
+        $this->uploadFile = $uploadFile;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUploadFile()
+    {
+        return $this->uploadFile;
+    }
+
+
 
 }

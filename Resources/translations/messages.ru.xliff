@@ -61,6 +61,55 @@
             </trans-unit>
 
 
+            <trans-unit id="is rubric index (no slug)">
+                <source>is rubric index (no slug)</source>
+                <target>индекс рубрики (код не вводится)</target>
+            </trans-unit>
+
+            <trans-unit id="use content title">
+                <source>use content title</source>
+                <target>Использовать заголовок материала</target>
+            </trans-unit>
+
+            <trans-unit id="Use field">
+                <source>Use field</source>
+                <target>Использовать поле</target>
+            </trans-unit>
+
+
+            <trans-unit id="Show content on website">
+                <source>Show content on website</source>
+                <target>Показывать на сайте</target>
+            </trans-unit>
+
+
+            <trans-unit id="Images Media">
+                <source>Images Media</source>
+                <target>Изображения</target>
+            </trans-unit>
+
+            <trans-unit id="Files Media">
+                <source>Files Media</source>
+                <target>Файлы</target>
+            </trans-unit>
+
+
+            <trans-unit id="Main">
+                <source>Main</source>
+                <target>Главное</target>
+            </trans-unit>
+
+
+            <trans-unit id="Media">
+                <source>Media</source>
+                <target>Изображение</target>
+            </trans-unit>
+
+
+            <trans-unit id="Redirect To First File">
+                <source>Redirect To First File</source>
+                <target>Редирект на первый файл</target>
+            </trans-unit>
 
         </body>
     </file>

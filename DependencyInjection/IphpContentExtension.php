@@ -28,7 +28,7 @@ class IphpContentExtension extends Extension
         }
 
         $loader->load('block.xml');
-
+        $loader->load('services.xml');
 
         $this->registerDoctrineMapping($config);
 
