@@ -22,7 +22,7 @@ class ContentFileAdmin extends IphpAdmin
         $formMapper->add('published', 'checkbox', array('required' => false))
             ->add('title', 'textarea', array('required' => false, 'attr' => array('style' => 'width:200px')))
             ->add('uploadFile', 'file', array('required' => false))
-            ->add('file', 'iphp_file', array('upload' => false, 'required' => false))
+            ->add('file', 'iphp_file', array())
             ->add('pos', 'hidden');
     }
 }
