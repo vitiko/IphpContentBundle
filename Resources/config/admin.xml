@@ -14,31 +14,26 @@
 
         <parameter key="iphp.content.admin.contentfile.class">Iphp\ContentBundle\Admin\ContentFileAdmin</parameter>
         <parameter key="iphp.content.admin.contentfile.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.contentfile.entity">Application\Iphp\ContentBundle\Entity\ContentFile
-        </parameter>
+        <parameter key="iphp.content.admin.contentfile.entity">Application\Iphp\ContentBundle\Entity\ContentFile</parameter>
 
         <parameter key="iphp.content.admin.contentimage.class">Iphp\ContentBundle\Admin\ContentImageAdmin</parameter>
         <parameter key="iphp.content.admin.contentimage.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.contentimage.entity">Application\Iphp\ContentBundle\Entity\ContentImage
-        </parameter>
+        <parameter key="iphp.content.admin.contentimage.entity">Application\Iphp\ContentBundle\Entity\ContentImage</parameter>
 
 
         <parameter key="iphp.content.admin.contentlink.class">Iphp\ContentBundle\Admin\ContentLinkAdmin</parameter>
         <parameter key="iphp.content.admin.contentlink.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.contentlink.entity">Application\Iphp\ContentBundle\Entity\ContentLink
-        </parameter>
+        <parameter key="iphp.content.admin.contentlink.entity">Application\Iphp\ContentBundle\Entity\ContentLink</parameter>
 
 
         <parameter key="iphp.content.admin.filemedia.class">Iphp\ContentBundle\Admin\ContentFileMediaAdmin</parameter>
         <parameter key="iphp.content.admin.filemedia.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.filemedia.entity">Application\Iphp\ContentBundle\Entity\ContentFileMedia
-        </parameter>
+        <parameter key="iphp.content.admin.filemedia.entity">Application\Iphp\ContentBundle\Entity\ContentFileMedia</parameter>
 
 
         <parameter key="iphp.content.admin.imagemedia.class">Iphp\ContentBundle\Admin\ContentImageMediaAdmin</parameter>
         <parameter key="iphp.content.admin.imagemedia.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.imagemedia.entity">Application\Iphp\ContentBundle\Entity\ContentImageMedia
-        </parameter>
+        <parameter key="iphp.content.admin.imagemedia.entity">Application\Iphp\ContentBundle\Entity\ContentImageMedia</parameter>
 
 
     </parameters>
