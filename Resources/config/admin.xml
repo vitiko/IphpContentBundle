@@ -9,30 +9,36 @@
         <parameter key="iphp.content.admin.content.controller">SonataAdminBundle:CRUD</parameter>
         <parameter key="iphp.content.admin.content.entity">Application\Iphp\ContentBundle\Entity\Content</parameter>
         <parameter key="iphp.content.admin.content.translation_domain">messages</parameter>
-
+        <parameter key="iphp.content.admin.content.group">Website</parameter>
+        <parameter key="iphp.content.admin.content.title">Content</parameter>
 
         <parameter key="iphp.content.admin.contentfile.class">Iphp\ContentBundle\Admin\ContentFileAdmin</parameter>
         <parameter key="iphp.content.admin.contentfile.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.contentfile.entity">Application\Iphp\ContentBundle\Entity\ContentFile</parameter>
+        <parameter key="iphp.content.admin.contentfile.entity">Application\Iphp\ContentBundle\Entity\ContentFile
+        </parameter>
 
         <parameter key="iphp.content.admin.contentimage.class">Iphp\ContentBundle\Admin\ContentImageAdmin</parameter>
         <parameter key="iphp.content.admin.contentimage.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.contentimage.entity">Application\Iphp\ContentBundle\Entity\ContentImage</parameter>
+        <parameter key="iphp.content.admin.contentimage.entity">Application\Iphp\ContentBundle\Entity\ContentImage
+        </parameter>
 
 
         <parameter key="iphp.content.admin.contentlink.class">Iphp\ContentBundle\Admin\ContentLinkAdmin</parameter>
         <parameter key="iphp.content.admin.contentlink.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.contentlink.entity">Application\Iphp\ContentBundle\Entity\ContentLink</parameter>
+        <parameter key="iphp.content.admin.contentlink.entity">Application\Iphp\ContentBundle\Entity\ContentLink
+        </parameter>
 
 
         <parameter key="iphp.content.admin.filemedia.class">Iphp\ContentBundle\Admin\ContentFileMediaAdmin</parameter>
         <parameter key="iphp.content.admin.filemedia.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.filemedia.entity">Application\Iphp\ContentBundle\Entity\ContentFileMedia</parameter>
+        <parameter key="iphp.content.admin.filemedia.entity">Application\Iphp\ContentBundle\Entity\ContentFileMedia
+        </parameter>
 
 
         <parameter key="iphp.content.admin.imagemedia.class">Iphp\ContentBundle\Admin\ContentImageMediaAdmin</parameter>
         <parameter key="iphp.content.admin.imagemedia.controller">SonataAdminBundle:CRUD</parameter>
-        <parameter key="iphp.content.admin.imagemedia.entity">Application\Iphp\ContentBundle\Entity\ContentImageMedia</parameter>
+        <parameter key="iphp.content.admin.imagemedia.entity">Application\Iphp\ContentBundle\Entity\ContentImageMedia
+        </parameter>
 
 
     </parameters>
@@ -40,7 +46,8 @@
     <services>
 
         <service id="iphp.content.admin.content" class="%iphp.content.admin.content.class%">
-            <tag name="sonata.admin" manager_type="orm" group="Сайт" label="Материалы"/>
+            <tag name="sonata.admin" manager_type="orm" group="%iphp.content.admin.content.group%"
+                 label="%iphp.content.admin.content.title%"/>
             <argument/>
             <argument>%iphp.content.admin.content.entity%</argument>
             <argument>%iphp.content.admin.content.controller%</argument>
@@ -55,11 +62,6 @@
             </call>
 -->
 
-            <!--
-            <call method="setTranslationDomain">
-                <argument>%iphp.content.admin.content.translation_domain%</argument>
-            </call>
-            -->
         </service>
 
 
@@ -80,7 +82,6 @@
         </service>
 
 
-
         <service id="iphp.content.admin.contentlink" class="%iphp.content.admin.contentlink.class%">
             <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false"/>
             <argument/>
@@ -92,14 +93,14 @@
 
         <service id="iphp.content.admin.content_file_media" class="%iphp.content.admin.filemedia.class%">
             <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false"/>
-            <argument />
+            <argument/>
             <argument>%iphp.content.admin.filemedia.entity%</argument>
             <argument>%iphp.content.admin.filemedia.controller%</argument>
         </service>
 
         <service id="iphp.content.admin.content_image_media" class="%iphp.content.admin.imagemedia.class%">
             <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false"/>
-            <argument />
+            <argument/>
             <argument>%iphp.content.admin.imagemedia.entity%</argument>
             <argument>%iphp.content.admin.imagemedia.controller%</argument>
         </service>

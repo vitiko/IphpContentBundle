@@ -1,2 +1,3 @@
 imports:
     - { resource: bundle/iphp_filestore.yml }
+    - { resource: bundle/sonata_media.yml }

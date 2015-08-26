@@ -14,7 +14,8 @@
  
     "require": {
         "iphp/core-bundle": "@stable",
-	    "iphp/filestore-bundle":"@stable"
+	    "iphp/filestore-bundle":"@stable",
+        "sonata-project/media-bundle": "@stable"
     },
 	
 	"autoload": {
