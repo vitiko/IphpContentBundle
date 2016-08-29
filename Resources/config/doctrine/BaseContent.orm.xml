@@ -15,7 +15,7 @@
         <field name="contentFormatter" type="string" column="content_formatter" nullable="true"/>
 
         <field name="enabled" type="boolean" column="enabled"/>
-        <field name="redirectToFirstFile" type="boolean" column="redirect_to_first_file"/>
+        <field name="redirectToFirstFile" type="boolean" column="redirect_to_first_file" nullable="true"/>
         <field name="slug" type="string" column="slug"/>
 
         <field name="publicationDateStart" type="datetime" column="publication_date_start" nullable="true"/>
